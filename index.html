@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>dbt Project Health Scorecard</title>
+<meta name="description" content="A free tool that turns dbt-project-evaluator results into a client-ready audit: a letter grade per category, the top 10 issues ranked by severity, and a prioritized remediation checklist. Nothing leaves your browser.">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<header class="site-header">
+  <div class="wrap">
+    <h1>dbt Project Health Scorecard</h1>
+    <p class="tagline">dbt-project-evaluator gives you raw test results. This turns them into the one-page audit you hand a client or a stakeholder: a grade per category, the issues that matter most first, and a checklist for fixing them. Everything runs in your browser; no data leaves this page.</p>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <section class="panel" id="load-panel">
+    <h2><span class="step-num">1</span> Load your results</h2>
+    <p class="muted">Upload the normalized JSON export from a <code>dbt-project-evaluator</code> run (see the README for the exact steps), or load the sample project below to see the scorecard first.</p>
+    <div class="load-row">
+      <input type="file" id="file-input" accept="application/json,.json">
+      <button id="load-sample" class="btn btn-primary" type="button">Load the sample project</button>
+    </div>
+    <div class="fixture-note" id="fixture-note">This scorecard is rendering the sample fixture, a representative composite, not a real evaluator run. See README "About the sample data".</div>
+    <div class="error-alert hidden" id="error-alert">
+      <h4>This file could not be scored</h4>
+      <ul id="error-list"></ul>
+    </div>
+  </section>
+
+  <section class="panel" id="empty-panel">
+    <div class="empty-state">
+      <p>No results loaded yet. Load the sample project to see a full scorecard in a few seconds, or upload your own evaluator export above.</p>
+      <button class="btn btn-primary load-sample-btn" type="button">Load the sample project</button>
+    </div>
+  </section>
+
+  <section class="panel hidden" id="overview-panel">
+    <h2><span class="step-num">2</span> <span id="project-name">Scorecard</span></h2>
+    <div class="overall">
+      <div class="badge" id="overall-badge">A</div>
+      <div class="info">
+        <h3 id="overall-label">Overall grade</h3>
+        <p id="overall-detail">Score 0 of 100, averaged across the five categories below.</p>
+      </div>
+    </div>
+    <div class="cat-grid" id="cat-grid"></div>
+  </section>
+
+  <section class="panel hidden" id="detail-panel">
+    <h2><span class="step-num">3</span> Where to look, and what to do</h2>
+    <div class="seg" id="view-tabs">
+      <button type="button" data-view="top10" class="active">Top 10 issues</button>
+      <button type="button" data-view="remediation">Remediation checklist</button>
+      <button type="button" data-view="all">All flagged issues</button>
+    </div>
+
+    <div class="view active" id="view-top10"></div>
+    <div class="view" id="view-remediation"></div>
+    <div class="view" id="view-all"></div>
+  </section>
+
+</main>
+
+<footer class="site-footer wrap">
+  <p>Free and open source. Runs entirely in your browser. <a href="https://github.com/bengodgart/dbt-project-health-scorecard">Source on GitHub</a>.</p>
+</footer>
+
+<script src="sample/sample-data.js"></script>
+<script src="scorecard.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

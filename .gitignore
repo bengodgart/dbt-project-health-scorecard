@@ -1,0 +1,11 @@
+# GTM / job-search assets kept private (NAS-only), not part of the public code
+PRD.md
+posts/
+publish-guide.html
+BUILD_REPORT.md
+
+# OS / editor noise
+.DS_Store
+Thumbs.db
+node_modules/
+*.log
