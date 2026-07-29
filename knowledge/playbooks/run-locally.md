@@ -4,7 +4,7 @@ title: Run dbt-project-health-scorecard locally
 description: 'How to open dbt-project-health-scorecard, feed it real evaluator output, and run its tests.'
 generated:
   by: claude-opus-5
-  at: '2026-07-29T04:24:12+00:00'
+  at: '2026-07-29T04:31:42+00:00'
 status: stable
 ---
 
